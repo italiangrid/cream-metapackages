@@ -1,0 +1,36 @@
+Summary: Metapackage for glite-SLURM_utils
+Name: @PKGNAME@
+Version: @PKGVERSION@
+Release: @PKGRELEASE@
+License: Apache License 2.0
+Vendor: EMI
+Group: System Environment/Libraries
+Packager: ETICS
+BuildArch: noarch
+Requires: dynsched-generic, info-dynamic-scheduler-slurm
+Requires: emi-version, glite-yaim-slurm-utils
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+AutoReqProv: yes
+Source: %{name}.tar.gz
+
+%description
+Metapackage for glite-SLURM_utils
+
+%prep
+
+%setup -c -q
+
+%install
+rm -rf %{buildroot}
+mkdir -p %{buildroot}
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root)
+
+%changelog
+* Fri Aug 31 2012 CREAM group <cream-support@lists.infn.it> - @PKGVERSION@-@PKGRELEASE@
+- New major release
+

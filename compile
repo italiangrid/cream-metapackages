@@ -1,0 +1,72 @@
+#!/bin/bash
+
+ITEMS_FOR_SOURCE="README.md"
+
+PKGLIST="CLUSTER CREAMCE SLURMCLIENT SLURMUTILS TORQUEUTILS TORQUESERVER TORQUECLIENT"
+
+PKGNAME_CLUSTER=emi-cluster
+PKGVER_CLUSTER=2.0.2
+PKGREL_CLUSTER=1
+
+PKGNAME_CREAMCE=emi-cream-ce
+PKGVER_CREAMCE=1.2.2
+PKGREL_CREAMCE=1
+
+PKGNAME_SLURMCLIENT=emi-slurm-client
+PKGVER_SLURMCLIENT=1.0.2
+PKGREL_SLURMCLIENT=1
+
+PKGNAME_SLURMUTILS=emi-slurm-utils
+PKGVER_SLURMUTILS=1.0.2
+PKGREL_SLURMUTILS=1
+
+PKGNAME_TORQUEUTILS=emi-torque-utils
+PKGVER_TORQUEUTILS=2.0.2
+PKGREL_TORQUEUTILS=1
+
+PKGNAME_TORQUESERVER=emi-torque-server
+PKGVER_TORQUESERVER=1.0.1
+PKGREL_TORQUESERVER=1
+
+PKGNAME_TORQUECLIENT=emi-torque-client
+PKGVER_TORQUECLIENT=1.0.1
+PKGREL_TORQUECLIENT=1
+
+
+if [ "${1}" == "clean" ] ; then
+    rm -rf ${PWD}/rpmbuild || echo "Nothing to clean"
+    exit 0
+fi
+
+if [ -z "${1}" -o "${1}" == "rpm" ] ; then
+
+    mkdir -p  rpmbuild/RPMS
+    mkdir -p  rpmbuild/SRPMS/
+    mkdir -p  rpmbuild/SPECS/
+    mkdir -p  rpmbuild/SOURCES/
+    mkdir -p  rpmbuild/BUILD/
+    
+    for PKGTAG in ${PKGLIST} ; do
+    
+        TMPS=PKGNAME_${PKGTAG}
+        echo $TMPS
+        PKGNAME=${!TMPS}
+        TMPS=PKGVER_${PKGTAG}
+        PKGVER=${!TMPS}
+        TMPS=PKGREL_${PKGTAG}
+        PKGREL=${!TMPS}
+    
+        tar -zcf rpmbuild/SOURCES/${PKGNAME}.tar.gz ${ITEMS_FOR_SOURCE}
+        sed -e 's|@PKGNAME@|'${PKGNAME}'|g' \
+            -e 's|@PKGVERSION@|'${PKGVER}'|g' \
+            -e 's|@PKGRELEASE@|'${PKGREL}'|g' \
+            project/${PKGNAME}.spec.in > rpmbuild/SPECS/${PKGNAME}.spec
+        rpmbuild -ba --define "_topdir ${PWD}/rpmbuild" rpmbuild/SPECS/${PKGNAME}.spec
+        
+    done
+else
+    echo "Unsupported format $1"
+    exit 1
+fi
+
+exit 0

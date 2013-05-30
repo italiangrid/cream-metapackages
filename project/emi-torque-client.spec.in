@@ -1,0 +1,37 @@
+Summary: Metapackage for TORQUE client installation
+Name: @PKGNAME@
+Version: @PKGVERSION@
+Release: @PKGRELEASE@
+License: Apache License 2.0
+Vendor: EMI
+Group: System Environment/Libraries
+Packager: ETICS
+BuildArch: noarch
+Requires: emi-version, libtorque, glite-yaim-torque-client
+Requires: torque, lcg-pbs-utils, torque-client, torque-mom  
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+AutoReqProv: yes
+Source: %{name}.tar.gz
+
+%description
+Metapackage for TORQUE client installation
+
+%prep
+
+%setup -c -q
+
+%install
+rm -rf %{buildroot}
+mkdir -p %{buildroot}
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root)
+
+%changelog
+* Fri Aug 31 2012 CREAM group <cream-support@lists.infn.it> - @PKGVERSION@-@PKGRELEASE@
+- New major release
+
+

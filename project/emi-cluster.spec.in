@@ -1,0 +1,43 @@
+Summary: Metapackage for gLite cluster
+Name: @PKGNAME@
+Version: @PKGVERSION@
+Release: @PKGRELEASE@
+License: Apache License 2.0
+Vendor: EMI
+Group: System Environment/Libraries
+Packager: ETICS
+BuildArch: noarch
+Requires: argus-gsi-pep-callout, bdii, cleanup-grid-accounts
+Requires: dynsched-generic, emi-version, fetch-crl
+Requires: glite-ce-cream-utils, glite-yaim-bdii
+Requires: glite-yaim-cluster, glite-info-provider-service
+Requires: glite-initscript-globus-gridftp
+Requires: globus-gridftp-server-progs, glue-schema
+Requires: lcas-lcmaps-gt4-interface, lcg-expiregridmapdir
+Requires: lcas-plugins-voms, lcas-plugins-basic
+Requires: lcmaps-plugins-basic, lcmaps-plugins-voms
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+AutoReqProv: yes
+Source: %{name}.tar.gz
+
+%description
+Metapackage for gLite cluster
+
+%prep
+
+%setup -c -q
+
+%install
+rm -rf %{buildroot}
+mkdir -p %{buildroot}
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root)
+
+%changelog
+* Fri Aug 31 2012 CREAM group <cream-support@lists.infn.it> - @PKGVERSION@-@PKGRELEASE@
+- New major release
+

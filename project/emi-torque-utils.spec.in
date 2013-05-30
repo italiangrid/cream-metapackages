@@ -1,0 +1,37 @@
+Summary: Metapackage for glite-TORQUE_utils
+Name: @PKGNAME@
+Version: @PKGVERSION@
+Release: @PKGRELEASE@
+License: Apache License 2.0
+Vendor: EMI
+Group: System Environment/Libraries
+Packager: ETICS
+BuildArch: noarch
+Requires: dynsched-generic, apel-parsers, lcg-info-dynamic-scheduler-pbs
+Requires: emi-version, glite-yaim-torque-utils, lcg-pbs-utils
+Requires: libtorque, torque, maui, maui-client, torque-client
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+AutoReqProv: yes
+Source: %{name}.tar.gz
+
+%description
+Metapackage for glite-TORQUE_utils
+
+%prep
+
+%setup -c -q
+
+%install
+rm -rf %{buildroot}
+mkdir -p %{buildroot}
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root)
+
+%changelog
+* Fri Aug 31 2012 CREAM group <cream-support@lists.infn.it> - @PKGVERSION@-@PKGRELEASE@
+- New major release
+
