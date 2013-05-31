@@ -16,7 +16,7 @@ Requires: globus-gridftp-server-progs, globus-proxy-utils, glue-schema, kill-sta
 Requires: lcas-lcmaps-gt4-interface, lcas-plugins-basic, lcas-plugins-check-executable,
 Requires: lcas-plugins-voms, lcg-expiregridmapdir, lcmaps-plugins-basic,
 Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, mysql-connector-java,
-Requires: mysql-server, ${TOMCATPKG}
+Requires: mysql-server, ${TOMCATPKG}, canl-java-tomcat
 Requires: voms-clients < 3.0.0
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 AutoReqProv: yes
