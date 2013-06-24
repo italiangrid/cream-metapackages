@@ -1,7 +1,7 @@
 Summary: This is a dummy package used to install the CREAM node
 Name: @PKGNAME@
 Version: @PKGVERSION@
-Release: @PKGRELEASE@
+Release: @PKGRELEASE@%{?dist}%{!?dist:.el5}
 License: Apache License 2.0
 Vendor: EMI
 Group: System Environment/Libraries
