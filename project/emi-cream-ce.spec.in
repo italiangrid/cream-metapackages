@@ -17,7 +17,6 @@ Requires: lcas-lcmaps-gt4-interface, lcas-plugins-basic, lcas-plugins-check-exec
 Requires: lcas-plugins-voms, lcg-expiregridmapdir, lcmaps-plugins-basic,
 Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, mysql-connector-java,
 Requires: mysql-server, @TOMCATPKG@, canl-java-tomcat
-Requires: voms-clients < 3.0.0
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 AutoReqProv: yes
 Source: %{name}.tar.gz
@@ -40,6 +39,9 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 
 %changelog
-* Fri Aug 31 2012 CREAM group <cream-support@lists.infn.it> - @PKGVERSION@-@PKGRELEASE@
+* Mon Jun 30 2014 CREAM group <cream-support@lists.infn.it> - @PKGVERSION@-@PKGRELEASE@
+- Removed dependency on voms-clients
+
+* Fri Aug 31 2012 CREAM group <cream-support@lists.infn.it> - 1.2.2-2
 - New major release
 
