@@ -1,7 +1,7 @@
 Summary: This is a dummy package used to install the CREAM node
 Name: @PKGNAME@-no-mariadb
 Version: @PKGVERSION@
-Release: @PKGRELEASE@%{?dist}%{!?dist:.el5}
+Release: @PKGRELEASE@%{?dist}
 License: Apache License 2.0
 Vendor: EMI
 Group: System Environment/Libraries
@@ -9,14 +9,14 @@ Packager: ETICS
 BuildArch: noarch
 Requires: argus-gsi-pep-callout, bdii, cleanup-grid-accounts
 Requires: dynsched-generic, emi-version, fetch-crl,
-Requires: glexec, apel-parsers, glite-ce-blahp, glite-ce-ce-plugin, glite-ce-cream-es,
-Requires: glite-ce-job-plugin, glite-ce-yaim-cream-ce, glite-info-provider-service,
+Requires: apel-parsers, glite-ce-blahp, glite-ce-cream-es,
+Requires: glite-ce-yaim-cream-ce, glite-info-provider-service,
 Requires: glite-initscript-globus-gridftp, glite-lb-logger, glite-yaim-bdii,
 Requires: globus-gridftp-server-progs, globus-proxy-utils, glue-schema, kill-stale-ftp,
 Requires: lcas-lcmaps-gt4-interface, lcas-plugins-basic, lcas-plugins-check-executable,
-Requires: lcas-plugins-voms, lcg-expiregridmapdir, lcmaps-plugins-basic,
-Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, mysql-connector-java,
-Requires: @TOMCATPKG@, canl-java-tomcat
+Requires: lcas-plugins-voms, lcg-expiregridmapdir, lcmaps-plugins-basic, glexec,
+Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms,
+Requires: @TOMCATPKG@, mysql-connector-java, canl-java-tomcat
 Conflicts: @PKGNAME@
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 AutoReqProv: yes
@@ -45,14 +45,14 @@ Summary: This is a dummy package used to install the CREAM node
 Group: System Environment/Libraries
 Requires: argus-gsi-pep-callout, bdii, cleanup-grid-accounts
 Requires: dynsched-generic, emi-version, fetch-crl,
-Requires: glexec, apel-parsers, glite-ce-blahp, glite-ce-ce-plugin, glite-ce-cream-es,
-Requires: glite-ce-job-plugin, glite-ce-yaim-cream-ce, glite-info-provider-service,
+Requires: apel-parsers, glite-ce-blahp, glite-ce-cream-es,
+Requires: glite-ce-yaim-cream-ce, glite-info-provider-service,
 Requires: glite-initscript-globus-gridftp, glite-lb-logger, glite-yaim-bdii,
 Requires: globus-gridftp-server-progs, globus-proxy-utils, glue-schema, kill-stale-ftp,
 Requires: lcas-lcmaps-gt4-interface, lcas-plugins-basic, lcas-plugins-check-executable,
 Requires: lcas-plugins-voms, lcg-expiregridmapdir, lcmaps-plugins-basic,
-Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, mysql-connector-java,
-Requires: @TOMCATPKG@, canl-java-tomcat
+Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, glexec,
+Requires: @TOMCATPKG@, mysql-connector-java, canl-java-tomcat
 Requires: mariadb-server
 Conflicts: @PKGNAME@-no-mariadb
 
