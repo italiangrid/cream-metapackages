@@ -9,7 +9,7 @@ PKGVER_CLUSTER=2.0.2
 PKGREL_CLUSTER=2
 
 PKGNAME_CREAMCE=emi-cream-ce
-PKGVER_CREAMCE=1.2.4
+PKGVER_CREAMCE=1.2.5
 PKGREL_CREAMCE=1
 
 PKGNAME_SLURMCLIENT=emi-slurm-client
@@ -40,16 +40,7 @@ fi
 
 if [ -z "${1}" -o "${1}" == "rpm" ] ; then
 
-    DISTROMV=`grep -Eo '[0-9]\.' /etc/redhat-release`
-    if [ "x${DISTROMV}" == "x5." ]; then
-        TOMCATPKG="tomcat5"
-    else if [ "x${DISTROMV}" == "x6." ]; then
-        TOMCATPKG="tomcat6"
-    else
-        echo "Cannot detect distro version"
-        exit 1
-    fi
-    fi
+    TOMCATPKG="tomcat"
 
     mkdir -p  rpmbuild/RPMS
     mkdir -p  rpmbuild/SRPMS/

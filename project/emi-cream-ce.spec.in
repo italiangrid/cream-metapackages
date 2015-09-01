@@ -1,5 +1,5 @@
 Summary: This is a dummy package used to install the CREAM node
-Name: @PKGNAME@-no-mysql
+Name: @PKGNAME@-no-mariadb
 Version: @PKGVERSION@
 Release: @PKGRELEASE@%{?dist}%{!?dist:.el5}
 License: Apache License 2.0
@@ -18,9 +18,6 @@ Requires: lcas-plugins-voms, lcg-expiregridmapdir, lcmaps-plugins-basic,
 Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, mysql-connector-java,
 Requires: @TOMCATPKG@, canl-java-tomcat
 Conflicts: @PKGNAME@
-%if ! (0%{?rhel} > 5)
-Conflicts: @PKGNAME@-mysql51, @PKGNAME@-mysql55
-%endif
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 AutoReqProv: yes
 Source: @PKGNAME@.tar.gz
@@ -56,85 +53,14 @@ Requires: lcas-lcmaps-gt4-interface, lcas-plugins-basic, lcas-plugins-check-exec
 Requires: lcas-plugins-voms, lcg-expiregridmapdir, lcmaps-plugins-basic,
 Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, mysql-connector-java,
 Requires: @TOMCATPKG@, canl-java-tomcat
-Requires: mysql-server
-Conflicts: @PKGNAME@-no-mysql
-%if ! (0%{?rhel} > 5)
-Conflicts: @PKGNAME@-mysql51, @PKGNAME@-mysql55
-%endif
+Requires: mariadb-server
+Conflicts: @PKGNAME@-no-mariadb
 
 %description -n @PKGNAME@
 This is a dummy package used to install the CREAM node
 
 %files -n @PKGNAME@
 %defattr(-,root,root)
-
-%if ! (0%{?rhel} > 5)
-
-%package -n @PKGNAME@-mysql55
-Summary: This is a dummy package used to install the CREAM node
-Group: System Environment/Libraries
-Requires: argus-gsi-pep-callout, bdii, cleanup-grid-accounts
-Requires: dynsched-generic, emi-version, fetch-crl,
-Requires: glexec, apel-parsers, glite-ce-blahp, glite-ce-ce-plugin, glite-ce-cream-es,
-Requires: glite-ce-job-plugin, glite-ce-yaim-cream-ce, glite-info-provider-service,
-Requires: glite-initscript-globus-gridftp, glite-lb-logger, glite-yaim-bdii,
-Requires: globus-gridftp-server-progs, globus-proxy-utils, glue-schema, kill-stale-ftp,
-Requires: lcas-lcmaps-gt4-interface, lcas-plugins-basic, lcas-plugins-check-executable,
-Requires: lcas-plugins-voms, lcg-expiregridmapdir, lcmaps-plugins-basic,
-Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, mysql-connector-java,
-Requires: @TOMCATPKG@, canl-java-tomcat
-Requires: mysql55
-Conflicts: @PKGNAME@-no-mysql
-Conflicts: @PKGNAME@, @PKGNAME@-mysql51
-
-%description -n @PKGNAME@-mysql55
-This is a dummy package used to install the CREAM node.
-The version of mysql used is 5.5
-
-%files -n @PKGNAME@-mysql55
-%defattr(-,root,root)
-
-%post -n @PKGNAME@-mysql55
-sed -i -e '/^MYSQL_PATH_PREFIX/d' -e '/^MYSQL_SERVICE_NAME/d' /opt/glite/yaim/defaults/glite-creamce.pre
-echo 'MYSQL_PATH_PREFIX=/opt/rh/mysql55/root' >> /opt/glite/yaim/defaults/glite-creamce.pre
-echo 'MYSQL_SERVICE_NAME=mysql55-mysqld' >> /opt/glite/yaim/defaults/glite-creamce.pre
-
-%pre -n @PKGNAME@-mysql55
-sed -i -e '/^MYSQL_PATH_PREFIX/d' -e '/^MYSQL_SERVICE_NAME/d' /opt/glite/yaim/defaults/glite-creamce.pre
-
-%package -n @PKGNAME@-mysql51
-Summary: This is a dummy package used to install the CREAM node
-Group: System Environment/Libraries
-Requires: argus-gsi-pep-callout, bdii, cleanup-grid-accounts
-Requires: dynsched-generic, emi-version, fetch-crl,
-Requires: glexec, apel-parsers, glite-ce-blahp, glite-ce-ce-plugin, glite-ce-cream-es,
-Requires: glite-ce-job-plugin, glite-ce-yaim-cream-ce, glite-info-provider-service,
-Requires: glite-initscript-globus-gridftp, glite-lb-logger, glite-yaim-bdii,
-Requires: globus-gridftp-server-progs, globus-proxy-utils, glue-schema, kill-stale-ftp,
-Requires: lcas-lcmaps-gt4-interface, lcas-plugins-basic, lcas-plugins-check-executable,
-Requires: lcas-plugins-voms, lcg-expiregridmapdir, lcmaps-plugins-basic,
-Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, mysql-connector-java,
-Requires: @TOMCATPKG@, canl-java-tomcat
-Requires: mysql51
-Conflicts: @PKGNAME@-no-mysql
-Conflicts: @PKGNAME@, @PKGNAME@-mysql55
-
-%description -n @PKGNAME@-mysql51
-This is a dummy package used to install the CREAM node.
-The version of mysql used is 5.1
-
-%files -n @PKGNAME@-mysql51
-%defattr(-,root,root)
-
-%post -n @PKGNAME@-mysql51
-sed -i -e '/^MYSQL_PATH_PREFIX/d' -e '/^MYSQL_SERVICE_NAME/d' /opt/glite/yaim/defaults/glite-creamce.pre
-echo 'MYSQL_PATH_PREFIX=/opt/rh/mysql51/root' >> /opt/glite/yaim/defaults/glite-creamce.pre
-echo 'MYSQL_SERVICE_NAME=mysql51-mysqld' >> /opt/glite/yaim/defaults/glite-creamce.pre
-
-%pre -n @PKGNAME@-mysql51
-sed -i -e '/^MYSQL_PATH_PREFIX/d' -e '/^MYSQL_SERVICE_NAME/d' /opt/glite/yaim/defaults/glite-creamce.pre
-
-%endif
 
 %changelog
 * Fri Dec 5 2014 CREAM group <cream-support@lists.infn.it> - @PKGVERSION@-@PKGRELEASE@
