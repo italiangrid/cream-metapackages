@@ -14,8 +14,9 @@ Requires: glite-ce-yaim-cream-ce, glite-info-provider-service,
 Requires: glite-initscript-globus-gridftp, glite-lb-logger, glite-yaim-bdii,
 Requires: globus-gridftp-server-progs, globus-proxy-utils, glue-schema, kill-stale-ftp,
 Requires: lcas-lcmaps-gt4-interface, lcas-plugins-basic, lcas-plugins-check-executable,
-Requires: lcas-plugins-voms, lcg-expiregridmapdir, lcmaps-plugins-basic, glexec,
-Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms,
+Requires: lcas-plugins-voms, lcg-expiregridmapdir, glexec,
+#Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, lcmaps-plugins-basic,
+Requires: lcmaps, lcmaps-without-gsi,
 Requires: @TOMCATPKG@, mysql-connector-java, canl-java-tomcat
 Conflicts: @PKGNAME@
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -50,8 +51,9 @@ Requires: glite-ce-yaim-cream-ce, glite-info-provider-service,
 Requires: glite-initscript-globus-gridftp, glite-lb-logger, glite-yaim-bdii,
 Requires: globus-gridftp-server-progs, globus-proxy-utils, glue-schema, kill-stale-ftp,
 Requires: lcas-lcmaps-gt4-interface, lcas-plugins-basic, lcas-plugins-check-executable,
-Requires: lcas-plugins-voms, lcg-expiregridmapdir, lcmaps-plugins-basic,
-Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, glexec,
+Requires: lcas-plugins-voms, lcg-expiregridmapdir, glexec,
+#Requires: lcmaps-plugins-verify-proxy, lcmaps-plugins-voms, lcmaps-plugins-basic,
+Requires: lcmaps, lcmaps-without-gsi
 Requires: @TOMCATPKG@, mysql-connector-java, canl-java-tomcat
 Requires: mariadb-server
 Conflicts: @PKGNAME@-no-mariadb
