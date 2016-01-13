@@ -49,7 +49,8 @@ Requires: argus-gsi-pep-callout, bdii, cleanup-grid-accounts
 Requires: dynsched-generic, emi-version, fetch-crl,
 Requires: apel-parsers, glite-ce-blahp, glite-ce-cream,
 #Requires: glite-ce-yaim-cream-ce, glite-yaim-bdii, glite-ce-cream-es,
-Requires: glite-initscript-globus-gridftp, glite-lb-logger, glite-info-provider-service,
+#Requires: glite-initscript-globus-gridftp
+Requires: glite-lb-logger, glite-info-provider-service,
 Requires: globus-gridftp-server-progs, globus-proxy-utils, glue-schema, kill-stale-ftp,
 Requires: lcas-lcmaps-gt4-interface, lcas-plugins-basic, lcas-plugins-check-executable,
 Requires: lcas-plugins-voms, lcg-expiregridmapdir, glexec,
