@@ -7,10 +7,9 @@ Vendor: EMI
 Group: System Environment/Libraries
 Packager: ETICS
 BuildArch: noarch
-Requires: glite-yaim-torque-server, glite-yaim-torque-utils
+#Requires: emi-version, glite-yaim-torque-server, glite-yaim-torque-utils
 Requires: maui-server, maui, maui-client
-Requires: emi-version
-Requires: libtorque, torque, torque-server, torque-client
+Requires: torque-server, torque-client
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 AutoReqProv: yes
 Source: %{name}.tar.gz

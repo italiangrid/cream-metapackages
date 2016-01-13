@@ -7,8 +7,8 @@ Vendor: EMI
 Group: System Environment/Libraries
 Packager: ETICS
 BuildArch: noarch
-Requires: emi-version, libtorque, glite-yaim-torque-client
-Requires: torque, lcg-pbs-utils, torque-client, torque-mom  
+#Requires: emi-version, glite-yaim-torque-client
+Requires: lcg-pbs-utils, torque-client, torque-mom  
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 AutoReqProv: yes
 Source: %{name}.tar.gz
