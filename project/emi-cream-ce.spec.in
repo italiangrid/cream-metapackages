@@ -33,13 +33,33 @@ This is a dummy package used to install the CREAM node
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}
+mkdir -p %{buildroot}/lib/systemd/system/
+mkdir -p %{buildroot}/etc/systemd/system/tomcat.service.d/
+mkdir -p %{buildroot}/etc/systemd/system/glite-lb-logd.service.d/
+mkdir -p %{buildroot}/etc/systemd/system/glite-ce-blah-parser.service.d/
+printf "[Unit]
+Description=Master service for CREAM CE
+Requires=tomcat.service glite-lb-logd.service glite-ce-blah-parser.service
+" > %{buildroot}/lib/systemd/system/glite-services.target
+printf "[Unit]
+PartOf=glite-services.target
+" > %{buildroot}/etc/systemd/system/tomcat.service.d/10-glite-services.conf
+printf "[Unit]
+PartOf=glite-services.target
+" > %{buildroot}/etc/systemd/system/glite-lb-logd.service.d/10-glite-services.conf
+printf "[Unit]
+PartOf=glite-services.target
+" > %{buildroot}/etc/systemd/system/glite-ce-blah-parser.service.d/10-glite-services.conf
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
+/lib/systemd/system/glite-services.target
+/etc/systemd/system/tomcat.service.d/10-glite-services.conf
+/etc/systemd/system/glite-lb-logd.service.d/10-glite-services.conf
+/etc/systemd/system/glite-ce-blah-parser.service.d/10-glite-services.conf
 
 
 %package -n @PKGNAME@
@@ -65,6 +85,10 @@ This is a dummy package used to install the CREAM node
 
 %files -n @PKGNAME@
 %defattr(-,root,root)
+/lib/systemd/system/glite-services.target
+/etc/systemd/system/tomcat.service.d/10-glite-services.conf
+/etc/systemd/system/glite-lb-logd.service.d/10-glite-services.conf
+/etc/systemd/system/glite-ce-blah-parser.service.d/10-glite-services.conf
 
 %changelog
 * Fri Dec 5 2014 CREAM group <cream-support@lists.infn.it> - @PKGVERSION@-@PKGRELEASE@
